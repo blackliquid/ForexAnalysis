@@ -22,18 +22,15 @@ def get_rates():
     # split text and reshape
 
     split_text = np.reshape(split_text, [10, 9])
-    split_text_joined = []
 
     # sub "/" for "_" for format unicity
     for i in range(len(split_text[:,0])):
         split_text[i, 0] = re.sub(r'/', r'_', split_text[i, 0])
-        line_joined = [split_text[i,0], split_text[i,1], split_text[i,2]+split_text[i,3], split_text[i,4] + split_text[i,5], split_text[i,6], split_text[i,7], split_text[i,8]]
-        split_text_joined.append(line_joined)
 
     # convert to pandas dataframe
 
-    df = pd.DataFrame(split_text_joined, dtype=float)
-    df.columns = ["currency", "id", "closing_prec", "open", "high", "low", "close"]
+    df = pd.DataFrame(split_text)
+    df.columns = ["currency", "timestamp", "bid_big_figure", "bid_pts", "offer_big_figure", "offer_pts", "high", "low", "open"]
     df.set_index("currency", inplace=True)
 
     return df

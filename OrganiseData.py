@@ -12,8 +12,6 @@ df_all.columns = [""]
 
 
 for dn in os.listdir(prefix):
-#if(True):
-#   dn = "EUR_USD/"
     df_folder = pd.DataFrame()
 
     for fn in glob.glob(prefix+dn+"/"+"*.xlsx"):
