@@ -16,3 +16,7 @@ Instructions :
 2. Use Weka FpGrowth on all.csv
 3. Copy paste the generated Rules into ParseRules.py
 4. Launch LiveAlerts.py
+
+Install dependencies : 
+
+sudo pip3 install -r dependencies.txt
