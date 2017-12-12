@@ -86,3 +86,4 @@ class LiveAlert(LiveTracker):
             print(" Prediction : " + prediction + " rising")
 
 live_alert = LiveAlert().alert_loop()
+print("Checking live rates and checking for matching rules...")
