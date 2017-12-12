@@ -20,3 +20,7 @@ Instructions :
 Install dependencies : 
 
 sudo pip3 install -r dependencies.txt
+
+################
+
+rules.txt are sample generated 50 rules using FPGROWTH on only 2017 data
