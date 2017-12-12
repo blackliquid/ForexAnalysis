@@ -4,48 +4,50 @@ import numpy as np
 import pandas as pd
 import threading
 
-def get_rates():
-    # open webpage
+class LiveTracker():
+    def __init__(self):
+        self.print_interval = 1
 
-    webpage = urllib.request.urlopen("http://webrates.truefx.com/rates/connect.html?f=html")
+    def get_rates(self):
+        ''''fetches the rates from truefx'''
 
-    # decode with utf8
+        # open webpage
 
-    text = webpage.read().decode("utf-8")
+        webpage = urllib.request.urlopen("http://webrates.truefx.com/rates/connect.html?f=html")
 
-    # simple dirty parsing with regex
+        # decode with utf8
 
-    split_text = re.split(r'</td><td>|<table><tr><td>|</td></tr><tr><td>|</td></tr></table>\r\n', text)
-    split_text.__delitem__(0)
-    split_text.__delitem__(len(split_text) - 1)
+        text = webpage.read().decode("utf-8")
 
-    # split text and reshape
+        # simple dirty parsing with regex
 
-    split_text = np.reshape(split_text, [10, 9])
+        split_text = re.split(r'</td><td>|<table><tr><td>|</td></tr><tr><td>|</td></tr></table>\r\n', text)
+        split_text.__delitem__(0)
+        split_text.__delitem__(len(split_text) - 1)
 
-    # sub "/" for "_" for format unicity
-    for i in range(len(split_text[:,0])):
-        split_text[i, 0] = re.sub(r'/', r'_', split_text[i, 0])
+        # split text and reshape
 
-    # convert to pandas dataframe
+        split_text = np.reshape(split_text, [10, 9])
+        split_text_joined = []
 
-    df = pd.DataFrame(split_text)
-    df.columns = ["currency", "timestamp", "bid_big_figure", "bid_pts", "offer_big_figure", "offer_pts", "high", "low", "open"]
-    df.set_index("currency", inplace=True)
+        # sub "/" for "_" for format unicity
+        for i in range(len(split_text[:, 0])):
+            split_text[i, 0] = re.sub(r'/', r'_', split_text[i, 0])
+            split_text_joined.append([split_text[i,0], split_text[i,1], split_text[i,2]+split_text[i,3], split_text[i,4]+split_text[i,5], split_text[i,6], split_text[i,7], split_text[i,8]])
 
-    return df
+        # convert to pandas dataframe
 
-def binarize(table):
-    diff = table["open"]-table["close"]
-    diff[diff > 0] = 0
-    diff[diff < 0] = 1
-    diff = pd.DataFrame(diff, dtype=int)
-    diff.columns = [""]
-    return diff.transpose()
+        columns = ["currency", "timestamp", "bid", "offer", "high", "low",
+                   "open"]
+        df = pd.DataFrame(split_text_joined, columns=columns)
+        df.set_index("currency", inplace=True)
+        df = df.astype(float)
 
-def print_loop():
-    threading.Timer(interval,print_loop).start()
-    df = get_rates()
-    print(df)
+        return df
 
-interval = 1
+    def print_loop(self):
+        '''prints the current rate every print_interval'''
+
+        threading.Timer(self.print_interval, self.print_loop).start()
+        df = self.get_rates()
+        print(df)

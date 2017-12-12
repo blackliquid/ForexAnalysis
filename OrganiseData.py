@@ -21,9 +21,14 @@ for dn in os.listdir(prefix):
         df.set_index("date", inplace=True)
         df.drop(columns="_", inplace=True)
 
-        #set value to 1 if the rate went up while the tick and 0 else
+        #calculate the avg value as high-low/2 for each tick
 
-        diff = df["open"] - df["close"]
+        avg = (df["high"] - df["low"])/2
+
+        #calculate the difference between two ticks
+
+        diff = avg.diff()
+
         diff[diff > 0] = 0
         diff[diff < 0] = 1
         diff = pd.DataFrame(diff)

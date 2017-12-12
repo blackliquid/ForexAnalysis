@@ -5,7 +5,7 @@ import pandas as pd
 file = open("rules.txt")
 text = file.read()
 
-def parse_rules(text):
+def parse_rules():
     lines = re.split(r"\n", text)
     clean_lines = []
 
