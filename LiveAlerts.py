@@ -1,27 +1,23 @@
 from ParseRules import *
 from LiveTracker import *
+from pygame import mixer
 import datetime
 import pandas as pd
 import threading
 
 
 class LiveAlert(LiveTracker):
-    def __init__(self):
+    def __init__(self, print_interval = 1, update_interval = 1, avg_interval = 60 ):
+        '''print_interval : interval for printing the rates for the print_loop method
+        update_interval : time interval for fetching the data from truefx
+        average_interval : interval for taking the average of the rate (the history is given in 1min Intervals, so it makes sense to set it to 60)'''
+
+        self.update_interval = update_interval
+        self.print_interval = print_interval
+        self.avg_interval = avg_interval
+        self.connected_print_flag = True
         self.init_flag = False
         self.avg = None
-
-        #time interval for fetching the data from truefx
-
-        self.update_interval = 1
-
-        #interval for printing the rates for the print_loop method
-
-        self.print_interval = 1
-
-        #interval for taking the average of the rate (the history is given in 1min Intervals, so it makes sense to set it to 60)
-
-        self.avg_interval = 60
-
         self.counter = 0
         self.currencies = ["EUR_USD",
                            "USD_JPY",
@@ -34,7 +30,12 @@ class LiveAlert(LiveTracker):
                            "AUD_USD",
                            "GBP_JPY"]
         self.rates_list = []
-        self.prereq, self.conseq = parse_rules()
+
+        #parse rules from rules_rising.txt / rules_falling.txt
+
+        self.prereq_rising, self.conseq_rising = parse_rules("rules_rising.txt")
+        self.prereq_falling, self.conseq_falling = parse_rules("rules_falling.txt")
+
 
     def alert_loop(self):
         '''method for giving automated warning in case that a mined rule is detected'''
@@ -43,7 +44,10 @@ class LiveAlert(LiveTracker):
 
         #collect the data every update_interval
 
-        self.rates_list.append(self.get_rates())
+        rates = self.get_rates()
+
+        if rates is not None:
+            self.rates_list.append(self.get_rates())
 
         #average the adata every avg_interval
 
@@ -55,35 +59,69 @@ class LiveAlert(LiveTracker):
             #we only can start comparing after we collected twovalues
 
             if self.init_flag == True:
-                diff = self.get_diff()
-                self.compare(self.prereq, self.conseq, diff)
+                diff_rising = self.binarize()
+                diff_falling = self.binarize(reverse_flag=True)
+
+                alert_flag_rising, date_rising, prediction_rising = self.compare(self.prereq_rising, self.conseq_rising, diff_rising)
+                alert_flag_falling, date_falling, prediction_falling = self.compare(self.prereq_falling, self.conseq_falling, diff_falling)
+
+                #if some rule rising/falling rule matches, give alert
+
+                if(alert_flag_rising is True):
+                    self.audio_alert()
+                    print(date_rising)
+                    print(prediction_rising+" rising")
+
+                if (alert_flag_falling is True):
+                    self.audio_alert()
+                    print(date_falling)
+                    print(prediction_falling+" falling")
 
             self.init_flag = True
 
-    def get_diff(self):
-        '''outputs the binarized difference vector between two ticks to see if the rate went up or down. 1-> rate went up; 0-> rate went down'''
+    def binarize(self, reverse_flag = False):
+        '''Outputs the binarized difference vector between two ticks to see if the rate went up or down.
+         reverse_flag = False : 1 => rate went up; 0 => rate went down
+         reverse_flag = True : 1 => rate went up; 0 => rate went down'''
 
-        diff = self.avg_old["bid"]-self.avg["bid"]
-        diff[diff > 0] = 0
-        diff[diff < 0] = 1
+        diff = self.avg_old["bid"] - self.avg["bid"]
+
+        if reverse_flag:
+            diff[diff > 0] = 1
+            diff[diff < 0] = 0
+        else:
+            diff[diff > 0] = 0
+            diff[diff < 0] = 1
+
         diff = pd.DataFrame(diff, dtype=int)
         diff.columns = [""]
+
         return diff.transpose()
 
     def get_avg(self,rates_list):
         return sum(rates_list) / len(rates_list)
 
     def compare(self,prereq, conseq, live_bin):
-        '''this method compares the live data to the rules mined via a inner join to see if any rule matches'''
+        '''This method compares the live data to the rules mined via a inner join to see if any rule matches
+        Returns a tuple (alert_flag, datetime, prediciton_string) where alert_flag is True when a rule is matched'''
 
+        alert_flag = False
+        rate = ""
         merge = pd.merge(prereq, live_bin, on=self.currencies, how='inner')
 
         for i in range(len(merge)):
+            alert_flag = True
             hit_index = merge.iloc[i, -1]
             live_conseq = pd.DataFrame(conseq.iloc[5, :])
-            prediction = live_conseq.idxmax().values[0]
-            print(datetime.datetime.now())
-            print(" Prediction : " + prediction + " rising")
+            rate = live_conseq.idxmax().values[0]
 
-live_alert = LiveAlert().alert_loop()
+        return (alert_flag, datetime.datetime.now()," Prediction : " + rate)
+
+    def audio_alert(self):
+        mixer.init()
+        mixer.music.load('alert.mp3')
+        mixer.music.play()
+
+live_alert = LiveAlert()
+live_alert.alert_loop()
 print("Checking live rates and checking for matching rules...")

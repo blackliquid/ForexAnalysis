@@ -5,15 +5,23 @@ import pandas as pd
 import threading
 
 class LiveTracker():
-    def __init__(self):
-        self.print_interval = 1
+    def __init__(self, print_interval = 1):
+        self.print_interval = print_interval
+        self.connected_print_flag = True
 
     def get_rates(self):
         ''''fetches the rates from truefx'''
 
         # open webpage
-
-        webpage = urllib.request.urlopen("http://webrates.truefx.com/rates/connect.html?f=html")
+        try:
+            webpage = urllib.request.urlopen("http://webrates.truefx.com/rates/connect.html?f=html")
+            if(self.connected_print_flag):
+                print("Connected to TrueFX live rates and checking for patterns...")
+                self.connected_print_flag = False
+        except:
+            print("Can't connect to the TrueFX live rates :( . Check your interenet connection and the status of TrueFX.")
+            self.connected_print_flag = True
+            return
 
         # decode with utf8
 
@@ -45,7 +53,7 @@ class LiveTracker():
 
         return df
 
-    def print_loop(self):
+    def print_loop(self, print_interval):
         '''prints the current rate every print_interval'''
 
         threading.Timer(self.print_interval, self.print_loop).start()

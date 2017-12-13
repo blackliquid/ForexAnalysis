@@ -2,10 +2,9 @@ import re
 import pandas as pd
 
 
-file = open("rules.txt")
-text = file.read()
-
-def parse_rules():
+def parse_rules(filename):
+    file = open(filename)
+    text = file.read()
     lines = re.split(r"\n", text)
     clean_lines = []
 
