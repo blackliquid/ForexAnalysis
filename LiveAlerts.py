@@ -7,7 +7,7 @@ import threading
 
 
 class LiveAlert(LiveTracker):
-    def __init__(self, print_interval = 1, update_interval = 1, avg_interval = 60 ):
+    def __init__(self, print_interval = 1, update_interval = 1, avg_interval = 60):
         '''print_interval : interval for printing the rates for the print_loop method
         update_interval : time interval for fetching the data from truefx
         average_interval : interval for taking the average of the rate (the history is given in 1min Intervals, so it makes sense to set it to 60)'''
@@ -33,8 +33,8 @@ class LiveAlert(LiveTracker):
 
         #parse rules from rules_rising.txt / rules_falling.txt
 
-        self.prereq_rising, self.conseq_rising = parse_rules("rules_rising.txt")
-        self.prereq_falling, self.conseq_falling = parse_rules("rules_falling.txt")
+        self.prereq_rising, self.conseq_rising, _ = parse_rules("rules_rising.txt")
+        self.prereq_falling, self.conseq_falling, _ = parse_rules("rules_falling.txt")
 
 
     def alert_loop(self):
@@ -107,13 +107,23 @@ class LiveAlert(LiveTracker):
 
         alert_flag = False
         rate = ""
+
+        #so we can track which rule was applied we add an column with the indices which can be tracked later
+        prereq = prereq.reset_index()
+
         merge = pd.merge(prereq, live_bin, on=self.currencies, how='inner')
 
         for i in range(len(merge)):
             alert_flag = True
-            hit_index = merge.iloc[i, -1]
-            live_conseq = pd.DataFrame(conseq.iloc[5, :])
-            rate = live_conseq.idxmax().values[0]
+
+        if len(merge) > 0 :
+            alert_flag = True
+            hits = merge["index"]
+
+            for i in hits.values:
+                hit_conseq = pd.DataFrame(conseq.iloc[i, :])
+                hit_rate = hit_conseq.idxmax().values[0]
+                rate = rate + " " + hit_rate
 
         return (alert_flag, datetime.datetime.now()," Prediction : " + rate)
 

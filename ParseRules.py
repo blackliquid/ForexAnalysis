@@ -3,28 +3,22 @@ import pandas as pd
 
 
 def parse_rules(filename):
+    '''Parses the rules found by weka saved in the rules.txt files'''
+
     file = open(filename)
     text = file.read()
     lines = re.split(r"\n", text)
-    clean_lines = []
-
-    for line in lines[0:-1]:
-        clean_lines.append(re.sub(r'binarized', r'-', re.sub(r'\W|[0-9]|confliftlevconv', r'', line)))
-
     prereq = []
     conseq = []
+    confidence = []
 
-    for line in clean_lines:
-        temp_list = re.split(r"-", line)
+    for line in lines[0:-1]:
+        temp_list = re.findall(r'\w\w\w_\w\w\w', line)
+        prereq.append(temp_list[0:-1])
+        conseq.append(temp_list[-1])
+        confidence.append(re.search(r'<conf:\((\d.\d{1,2})\)', line).group(1))
 
-        temp_list_clean = []
-
-        for elem in temp_list[0:-1]:
-            temp_list_clean.append(elem[:-1])
-        prereq.append(temp_list_clean[0:-1])
-        conseq.append(temp_list_clean[-1])
-
-
+    confidence_df = pd.DataFrame(confidence)
 
     #binarize attributes
 
@@ -63,4 +57,4 @@ def parse_rules(filename):
 
     #return prereq_df, conseq_df
 
-    return prereq_binarized, conseq_binarized
+    return prereq_binarized, conseq_binarized, confidence_df
