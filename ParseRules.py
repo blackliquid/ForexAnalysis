@@ -36,9 +36,13 @@ def parse_rules(filename):
     #binarize prereq
 
     prereq_binarized = pd.DataFrame(columns=currencies)
-    for rule in prereq:
+    for rule, conseq_iter in zip(prereq, conseq):
         onehot = pd.get_dummies(rule, columns= currencies)
         onehot = pd.DataFrame(onehot.sum(0))
+
+        #add the condition that the consequence of the rule has to be 0. It's not interesting to know a rate is going to rise if it already rises
+
+        onehot = pd.concat([onehot, pd.DataFrame([0], index = [conseq_iter])])
         prereq_binarized = pd.concat([prereq_binarized, onehot.transpose()])
     prereq_binarized.reset_index(inplace=True)
     prereq_binarized.drop(columns = "index", inplace=True)

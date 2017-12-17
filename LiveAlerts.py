@@ -33,8 +33,8 @@ class LiveAlert(LiveTracker):
 
         #parse rules from rules_rising.txt / rules_falling.txt
 
-        self.prereq_rising, self.conseq_rising, _ = parse_rules("rules_rising.txt")
-        self.prereq_falling, self.conseq_falling, _ = parse_rules("rules_falling.txt")
+        self.prereq_rising, self.conseq_rising, self.confidence_rising = parse_rules("rules_rising.txt")
+        self.prereq_falling, self.conseq_falling, self.confidence_falling = parse_rules("rules_falling.txt")
 
 
     def alert_loop(self):
@@ -61,21 +61,25 @@ class LiveAlert(LiveTracker):
             if self.init_flag == True:
                 diff_rising = self.binarize()
                 diff_falling = self.binarize(reverse_flag=True)
+                diff_falling.at[:, "USD_JPY"] = 1
+                diff_falling.at[:, "GBP_USD"] = 1
 
-                alert_flag_rising, date_rising, prediction_rising = self.compare(self.prereq_rising, self.conseq_rising, diff_rising)
-                alert_flag_falling, date_falling, prediction_falling = self.compare(self.prereq_falling, self.conseq_falling, diff_falling)
+                alert_flag_rising, date_rising, prediction_rising, pred_conf_rising = self.compare_with_nan(self.prereq_rising, self.conseq_rising, diff_rising, self.confidence_rising)
+                alert_flag_falling, date_falling, prediction_falling, pred_conf_falling = self.compare_with_nan(self.prereq_falling, self.conseq_falling, diff_falling, self.confidence_falling)
 
                 #if some rule rising/falling rule matches, give alert
 
                 if(alert_flag_rising is True):
                     self.audio_alert()
                     print(date_rising)
-                    print(prediction_rising+" rising")
+                    for curr, conf in zip(prediction_rising, pred_conf_rising):
+                        print("Prediction : " + curr + " rising with confidence " + conf)
 
                 if (alert_flag_falling is True):
                     self.audio_alert()
                     print(date_falling)
-                    print(prediction_falling+" falling")
+                    for curr, conf in zip(prediction_falling, pred_conf_falling):
+                        print("Prediction : " + curr + " falling with confidence " + conf)
 
             self.init_flag = True
 
@@ -94,7 +98,7 @@ class LiveAlert(LiveTracker):
             diff[diff < 0] = 1
 
         diff = pd.DataFrame(diff, dtype=int)
-        diff.columns = [""]
+        diff.columns = ["live"]
 
         return diff.transpose()
 
@@ -106,7 +110,7 @@ class LiveAlert(LiveTracker):
         Returns a tuple (alert_flag, datetime, prediciton_string) where alert_flag is True when a rule is matched'''
 
         alert_flag = False
-        rate = ""
+        rate = []
 
         #so we can track which rule was applied we add an column with the indices which can be tracked later
         prereq = prereq.reset_index()
@@ -123,9 +127,34 @@ class LiveAlert(LiveTracker):
             for i in hits.values:
                 hit_conseq = pd.DataFrame(conseq.iloc[i, :])
                 hit_rate = hit_conseq.idxmax().values[0]
-                rate = rate + " " + hit_rate
+                rate.append(hit_rate)
 
-        return (alert_flag, datetime.datetime.now()," Prediction : " + rate)
+        return (alert_flag, datetime.datetime.now(), rate)
+
+    def compare_with_nan(self, prereq, conseq, record, confidence):
+
+        alert_flag = False
+        hits = []
+        rates = []
+        confidence_list = []
+
+        for prereq_row_index, prereq_row in prereq.iterrows():
+            row_flag = True
+            for entry_index, entry_value in prereq_row.iteritems():
+                if(entry_value == 1 and record.at["live",entry_index] == 0):
+                    row_flag = False
+            if(row_flag):
+                hits.append(prereq_row_index)
+                confidence_list.append(confidence.iloc[prereq_row_index].item())
+
+        if(len(hits)>0):
+            alert_flag = True
+            for i in hits:
+                hit_conseq = pd.DataFrame(conseq.iloc[i, :])
+                hit_rate = hit_conseq.idxmax().values[0]
+                rates.append(hit_rate)
+
+        return alert_flag, datetime.datetime.now(), rates, confidence_list
 
     def audio_alert(self):
         mixer.init()

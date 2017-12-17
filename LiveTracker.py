@@ -53,7 +53,7 @@ class LiveTracker():
 
         return df
 
-    def print_loop(self, print_interval):
+    def print_loop(self):
         '''prints the current rate every print_interval'''
 
         threading.Timer(self.print_interval, self.print_loop).start()
