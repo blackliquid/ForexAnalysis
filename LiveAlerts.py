@@ -61,8 +61,6 @@ class LiveAlert(LiveTracker):
             if self.init_flag == True:
                 diff_rising = self.binarize()
                 diff_falling = self.binarize(reverse_flag=True)
-                diff_falling.at[:, "USD_JPY"] = 1
-                diff_falling.at[:, "GBP_USD"] = 1
 
                 alert_flag_rising, date_rising, prediction_rising, pred_conf_rising = self.compare_with_nan(self.prereq_rising, self.conseq_rising, diff_rising, self.confidence_rising)
                 alert_flag_falling, date_falling, prediction_falling, pred_conf_falling = self.compare_with_nan(self.prereq_falling, self.conseq_falling, diff_falling, self.confidence_falling)
