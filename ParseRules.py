@@ -46,7 +46,6 @@ def parse_rules(filename):
         prereq_binarized = pd.concat([prereq_binarized, onehot.transpose()])
     prereq_binarized.reset_index(inplace=True)
     prereq_binarized.drop(columns = "index", inplace=True)
-    prereq_binarized.fillna(0, inplace=True)
 
 
     #binarize conseq

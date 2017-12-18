@@ -60,6 +60,7 @@ class LiveAlert(LiveTracker):
 
             if self.init_flag == True:
                 diff_rising = self.binarize()
+
                 diff_falling = self.binarize(reverse_flag=True)
 
                 alert_flag_rising, date_rising, prediction_rising, pred_conf_rising = self.compare_with_nan(self.prereq_rising, self.conseq_rising, diff_rising, self.confidence_rising)
@@ -139,7 +140,7 @@ class LiveAlert(LiveTracker):
         for prereq_row_index, prereq_row in prereq.iterrows():
             row_flag = True
             for entry_index, entry_value in prereq_row.iteritems():
-                if(entry_value == 1 and record.at["live",entry_index] == 0):
+                if((entry_value == 1 and record.at["live",entry_index] == 0) or (entry_value == 0 and record.at["live",entry_index] == 1)):
                     row_flag = False
             if(row_flag):
                 hits.append(prereq_row_index)
