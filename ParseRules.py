@@ -2,8 +2,12 @@ import re
 import pandas as pd
 
 
-def parse_rules(filename):
-    '''Parses the rules found by weka saved in the rules.txt files'''
+def parse_rules(filename, simpleRules = False):
+    '''Parses the rules found by weka saved in the rules.txt files. When the simple rules parameter is True, rules do not
+    require to consequent of the rule to be false. For example with simpleRules = True and a rule GBP/JPY => EUR/JPY, the alert launches when GBP/JPY
+    and EUR/JPY rises. With simpleRules = False, it woud additionally require that EUR/JPY Falls.
+
+    It seems that surprisingly the algorithm works REALLY bad with simpleRules = True'''
 
     file = open(filename)
     text = file.read()
@@ -42,8 +46,11 @@ def parse_rules(filename):
 
         #add the condition that the consequence of the rule has to be 0. It's not interesting to know a rate is going to rise if it already rises
 
-        onehot = pd.concat([onehot, pd.DataFrame([0], index = [conseq_iter])])
+        if not simpleRules:
+            onehot = pd.concat([onehot, pd.DataFrame([0], index = [conseq_iter])])
+
         prereq_binarized = pd.concat([prereq_binarized, onehot.transpose()])
+
     prereq_binarized.reset_index(inplace=True)
     prereq_binarized.drop(columns = "index", inplace=True)
 
