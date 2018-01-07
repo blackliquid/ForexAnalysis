@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb96403-679b-458a-83e2-fc6d73cae874" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/OrganiseData.py" afterPath="$PROJECT_DIR$/OrganiseData.py" />
-      <change beforePath="$PROJECT_DIR$/ParseRules.py" afterPath="$PROJECT_DIR$/ParseRules.py" />
-      <change beforePath="$PROJECT_DIR$/TestAcc.py" afterPath="$PROJECT_DIR$/TestAcc.py" />
-      <change beforePath="$PROJECT_DIR$/all_falling.arff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/all_falling.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/all_rising.arff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/all_rising.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/rules_falling.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/rules_rising.txt" afterPath="$PROJECT_DIR$/rules_rising.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +14,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ForexAnalysis$LiveTracker.coverage" NAME="LiveTracker Coverage Results" MODIFIED="1512829104342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ForexAnalysis$TestAcc.coverage" NAME="TestAcc Coverage Results" MODIFIED="1515330607672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ForexAnalysis$OrganiseData.coverage" NAME="OrganiseData Coverage Results" MODIFIED="1515335840990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ForexAnalysis$OrganiseData.coverage" NAME="OrganiseData Coverage Results" MODIFIED="1515347716166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ForexAnalysis$PandasTest.coverage" NAME="PandasTest Coverage Results" MODIFIED="1512741953798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ForexAnalysis$LiveAlerts.coverage" NAME="LiveAlerts Coverage Results" MODIFIED="1513591479748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ForexAnalysis$OrganiseData_drop.coverage" NAME="OrganiseData_drop Coverage Results" MODIFIED="1515337443299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -62,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestAcc.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestAcc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestAcc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="63" lean-forward="false" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+            <state relative-caret-position="180">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -74,11 +65,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrganiseData.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="OrganiseData.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OrganiseData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="79" column="48" lean-forward="false" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+            <state relative-caret-position="90">
+              <caret line="5" column="74" lean-forward="false" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/pandas/core/generic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="3633" column="13" lean-forward="false" selection-start-line="3633" selection-start-column="13" selection-end-line="3633" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -153,6 +156,7 @@
       <find>fill</find>
       <find>dn</find>
       <find>test_inter</find>
+      <find>listdir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,8 +170,8 @@
         <option value="$PROJECT_DIR$/LiveAlerts.py" />
         <option value="$PROJECT_DIR$/OrganiseData_drop.py" />
         <option value="$PROJECT_DIR$/ParseRules.py" />
-        <option value="$PROJECT_DIR$/OrganiseData.py" />
         <option value="$PROJECT_DIR$/TestAcc.py" />
+        <option value="$PROJECT_DIR$/OrganiseData.py" />
       </list>
     </option>
   </component>
@@ -178,10 +182,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="76" />
+    <option name="x" value="233" />
     <option name="y" value="-4" />
-    <option name="width" value="1851" />
-    <option name="height" value="1068" />
+    <option name="width" value="1849" />
+    <option name="height" value="1060" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -221,7 +225,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TestAcc">
+  <component name="RunManager" selected="Python.OrganiseData">
     <configuration name="LiveAlerts" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -349,9 +353,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.TestAcc" />
-        <item index="1" class="java.lang.String" itemvalue="Python.OrganiseData_drop" />
-        <item index="2" class="java.lang.String" itemvalue="Python.OrganiseData" />
+        <item index="0" class="java.lang.String" itemvalue="Python.OrganiseData" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TestAcc" />
+        <item index="2" class="java.lang.String" itemvalue="Python.OrganiseData_drop" />
         <item index="3" class="java.lang.String" itemvalue="Python.LiveAlerts" />
         <item index="4" class="java.lang.String" itemvalue="Python.LiveTracker" />
       </list>
@@ -383,15 +387,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="76" y="-4" width="1857" height="1092" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.4936429" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48481676" sideWeight="0.37258154" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48481676" sideWeight="0.3808734" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="413" height="884" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.49143174" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48481676" sideWeight="0.62741846" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48481676" sideWeight="0.6191266" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.49585405" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21945827" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -400,7 +404,7 @@
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946378" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38010472" sideWeight="0.59646213" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38010472" sideWeight="0.5936982" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -446,6 +450,11 @@
           <line>39</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/OrganiseData.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -454,7 +463,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="49" />
+      <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -635,13 +644,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PandasTest.py" />
-    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/pandas/core/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="3897" column="8" lean-forward="false" selection-start-line="3897" selection-start-column="8" selection-end-line="3897" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydev_run_in_console.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -768,20 +770,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OrganiseData.py">
+    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/pandas/core/generic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="79" column="48" lean-forward="false" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+        <state relative-caret-position="349">
+          <caret line="3633" column="13" lean-forward="false" selection-start-line="3633" selection-start-column="13" selection-end-line="3633" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestAcc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="63" lean-forward="false" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OrganiseData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="74" lean-forward="false" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

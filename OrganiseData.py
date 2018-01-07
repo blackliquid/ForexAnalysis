@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import glob
 
-def parse_data(folder, reverse_flag = False, replace_nan = False, drop = 0):
+def parse_data(folder, reverse_flag = False, replace_nan = False, drop = 1):
     ''' Parses the data from the tables from http://www.histdata.com/download-free-forex-data/?/ in the data folder into a single, binarized file.
     Set reverse_flag = False if you want to obtain rules for rising rates, and reverse_flag = True to obtain rules for falling rates'''
 
@@ -37,7 +37,7 @@ def parse_data(folder, reverse_flag = False, replace_nan = False, drop = 0):
 
     #if drop activated, only keep 1/drop of the columns
 
-    if drop != 0:
+    if (drop != 0 and drop != 1):
         df_all.reset_index(inplace=True)
         df_all.drop(list(set(range(0, len(df_all.index))) - set(range(0, len(df_all.index), drop))), inplace=True)
         df_all.set_index("index", inplace=True)
@@ -67,15 +67,15 @@ def parse_data(folder, reverse_flag = False, replace_nan = False, drop = 0):
     # save into csv
 
     if reverse_flag:
-        diff.to_csv("./"+folder+"_falling.csv", index_label="date", float_format="%d")
-        print("saved everything to : "+folder+"_falling.csv")
+        diff.to_csv("./"+folder+"_falling_drop"+str(drop)+".csv", index_label="date", float_format="%d")
+        print("./"+folder+"_falling_drop"+str(drop)+".csv")
     else:
-        diff.to_csv("./"+folder+"_rising.csv", index_label="date", float_format="%d")
-        print("saved everything to : "+folder+"_rising.csv")
+        diff.to_csv("./"+folder+"_rising_drop"+str(drop)+".csv", index_label="date", float_format="%d")
+        print("./"+folder+"_rising_drop"+str(drop)+".csv")
 
 def csv_to_arff(file_name):
     pass
 
-folder = "2016"
-parse_data(folder, reverse_flag= False, drop = 1)
+folder = "2017_01"
+parse_data(folder, reverse_flag= False, drop = 0)
 
