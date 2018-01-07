@@ -79,5 +79,3 @@ def csv_to_arff(file_name):
 folder = "2016"
 parse_data(folder, reverse_flag= False, drop = 1)
 
-# drop part of the list if drop != 0. Used for evaluation
-
