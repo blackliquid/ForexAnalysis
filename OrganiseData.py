@@ -76,6 +76,6 @@ def parse_data(folder, reverse_flag = False, replace_nan = False, drop = 1):
 def csv_to_arff(file_name):
     pass
 
-folder = "2017_01"
-parse_data(folder, reverse_flag= False, drop = 0)
+folder = "2017"
+parse_data(folder, reverse_flag= True, drop = 0)
 
