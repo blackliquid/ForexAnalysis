@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6530) (preloaded format=pdflatex 2018.1.21)  28 JAN 2018 17:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6530) (preloaded format=pdflatex 2018.1.21)  28 JAN 2018 18:04
 entering extended mode
 **./project_tex.tex
 (project_tex.tex
@@ -891,7 +891,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--43
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 44--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--54
 
  []
 
@@ -899,53 +909,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
 
 {/home/chris/.miktex/texmfs/data/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--52
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--70
+Underfull \vbox (badness 1320) has occurred while \output is active []
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
+ [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
  (project_tex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
 Package rerunfilecheck Info: File `project_tex.out' has not changed.
 (rerunfilecheck)             Checksum: 126061BA5087C6458AE879B75992DB2A;352.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 10504 strings out of 495207
- 167947 string characters out of 3181272
- 372621 words of memory out of 3000000
+ 10507 strings out of 495207
+ 167975 string characters out of 3181272
+ 373621 words of memory out of 3000000
  13594 multiletter control sequences out of 15000+200000
- 54274 words of font info for 79 fonts, out of 3000000 for 9000
+ 54357 words of font info for 80 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,6n,60p,8824b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,7n,60p,8824b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/home/chris/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-rm.enc}{/home/chris
 /.miktex/texmfs/install/fonts/enc/dvips/lm/lm-mathit.enc}{/home/chris/.miktex/t
 exmfs/install/fonts/enc/dvips/lm/lm-mathsy.enc}{/home/chris/.miktex/texmfs/inst
@@ -958,9 +972,9 @@ hris/.miktex/texmfs/install/fonts/type1/public/lm/lmr8.pfb></home/chris/.miktex
 stall/fonts/type1/public/lm/lmssbx10.pfb></home/chris/.miktex/texmfs/install/fo
 nts/type1/public/lm/lmsy10.pfb></home/chris/.miktex/texmfs/install/fonts/type1/
 public/lm/lmtt10.pfb>
-Output written on project_tex.pdf (3 pages, 156032 bytes).
+Output written on project_tex.pdf (4 pages, 157461 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 12 named destinations out of 1000 (max. 500000)
+ 98 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
  13369 words of extra memory for PDF output out of 14400 (max. 10000000)
 

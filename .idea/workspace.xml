@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb96403-679b-458a-83e2-fc6d73cae874" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.~lock.data_test.csv#" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2016_rising.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2016_rising_drop3.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2017_01_rising_drop3.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2017_falling_drop0.arff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2017_falling_drop0.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2017_rising.arff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/2017_rising.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/LiveAlerts.py" afterPath="$PROJECT_DIR$/LiveAlerts.py" />
-      <change beforePath="$PROJECT_DIR$/OrganiseData.py" afterPath="$PROJECT_DIR$/OrganiseData.py" />
-      <change beforePath="$PROJECT_DIR$/ParseRules.py" afterPath="$PROJECT_DIR$/ParseRules.py" />
-      <change beforePath="$PROJECT_DIR$/TestAcc.py" afterPath="$PROJECT_DIR$/TestAcc.py" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" afterPath="$PROJECT_DIR$/readme.txt" />
-      <change beforePath="$PROJECT_DIR$/rule_parameters" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/rules_falling.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/rules_rising.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/latex/project_tex.log" afterPath="$PROJECT_DIR$/latex/project_tex.log" />
+      <change beforePath="$PROJECT_DIR$/latex/project_tex.pdf" afterPath="$PROJECT_DIR$/latex/project_tex.pdf" />
+      <change beforePath="$PROJECT_DIR$/latex/project_tex.synctex.gz" afterPath="$PROJECT_DIR$/latex/project_tex.synctex.gz" />
+      <change beforePath="$PROJECT_DIR$/latex/project_tex.tex" afterPath="$PROJECT_DIR$/latex/project_tex.tex" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />

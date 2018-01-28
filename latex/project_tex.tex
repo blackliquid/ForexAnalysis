@@ -39,9 +39,17 @@ pdfborder={0 0 0}]{hyperref}
 
 	We use two different discretization intervals : 1 minute and 4 hours. We want to try to use the algorithm to make short term predictions (useful for high frequency trading) and long term predictions (long term trends).\\
 	
-	More precisely the binarization is in the following manner : at each record, we take the average price between the "high" and "low" value. We then compare this value to the next average value (1 minute discretization) or the average value of the record 4 hours later (4 hour discretization).\\
+	More precisely the binarization is in the following manner : at each record, we take the average price between the "high" and "low" value. We then compare this value to the next average value (1 minute discretization) or the average value of the record 4 hours later (4 hour discretization). If the value rose/fell in this time interval, we set the binary value to 1, else 0.\\
 	
-	
+	Each record is then represented by a binary vector with 9 entries, that can be seen as transactions. Two example records could look like (for simplicity only 4  pairs):\\
+	\\
+	 \begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+		&EUR/CHF&EUR/GBP&EUR/JPY&EUR/USD\\
+		2013-05-01 12:04&0&1&1&0\\
+		2013-05-01 12:05&1&1&1&0\\
+	\end{tabular}
+	\\
+	\\
 	As for missing data, to apply the FPGrowth algorithm, it constitutes no problem to replace missing values with zeros. If a value is not available, we simply say it is not rising/falling. For the evaluation data, this would be a big mistake, since this procedure could make us say a prediction is wrong when in reality we simply don't know because the data is missing.\\
 		
 	Since there is no time component in FPGrowth, we can simply discard the date attribute. This is the second big generalization that makes us lose information.\\
