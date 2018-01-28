@@ -1,6 +1,0 @@
-Used parameters : 
-
-metricType : Confidence
-numRulesToFind : 50
-minMetric : 0.7
-lowerBoundMinSupport : 0.1

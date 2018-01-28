@@ -33,8 +33,8 @@ class LiveAlert(LiveTracker):
 
         #parse rules from rules_rising.txt / rules_falling.txt
 
-        self.prereq_rising, self.conseq_rising, self.confidence_rising = parse_rules("rules_rising.txt")
-        self.prereq_falling, self.conseq_falling, self.confidence_falling = parse_rules("rules_falling.txt")
+        self.prereq_rising, self.conseq_rising, self.confidence_rising = parse_rules("./rules/rules_rising_drop0.txt")
+        self.prereq_falling, self.conseq_falling, self.confidence_falling = parse_rules("./rules/rules_falling_drop0.txt")
 
 
     def alert_loop(self):

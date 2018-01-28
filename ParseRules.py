@@ -20,7 +20,7 @@ def parse_rules(filename, simpleRules = False):
         temp_list = re.findall(r'\w\w\w_\w\w\w', line)
         prereq.append(temp_list[0:-1])
         conseq.append(temp_list[-1])
-        confidence.append(re.search(r'<conf:\((\d.\d{1,2})\)', line).group(1))
+        confidence.append(re.search(r'<....:\((\d.\d{1,2})\)', line).group(1))
 
     confidence_df = pd.DataFrame(confidence)
 

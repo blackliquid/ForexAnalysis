@@ -40,15 +40,23 @@ def get_acc(prereq, conseq, records):
     return true_positive, false_positive
 
 
-filename = "2017_01_rising_drop3.csv"
+filename_rising = "./preprocessed/2017_rising_drop3.csv"
+test_data_rising = pd.read_csv(filename_rising)
 
-real_data = pd.read_csv(filename)
+filename_falling = "./preprocessed/2017_falling_drop3.csv"
+test_data_falling = pd.read_csv(filename_falling)
 
-prereq_rising, conseq_rising, _ = parse_rules("rules_rising.txt")
+prereq_rising, conseq_rising, _ = parse_rules("./rules/rules_rising_drop0.txt")
 prereq_rising.drop(columns = "AUD_USD", inplace = True)
-#prereq_falling, conseq_falling, _ = parse_rules("rules_falling.txt")
-#prereq_falling.drop(columns = "AUD_USD", inplace = True)
 
-tp, fp = get_acc(prereq_rising, conseq_rising, real_data)
-acc = tp/(tp+fp)*100
-print(filename+" Accuracy in % :", acc)
+prereq_falling, conseq_falling, _ = parse_rules("./rules/rules_falling_drop0.txt")
+prereq_falling.drop(columns = "AUD_USD", inplace = True)
+
+rising_tp, rising_fp = get_acc(prereq_rising, conseq_rising, test_data_rising)
+falling_tp, falling_fp = get_acc(prereq_falling, conseq_falling, test_data_falling)
+
+acc_rising = rising_tp/(rising_tp+rising_fp)*100
+print(filename_rising+"Precision in % :", acc_rising)
+
+acc_falling = falling_tp/(falling_tp+falling_fp)*100
+print(filename_falling+"Precision in % :", acc_falling)

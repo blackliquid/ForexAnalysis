@@ -1,0 +1,6 @@
+1. [EUR_JPY_binarized=1, GBP_USD_binarized=1]: 4898 ==> [GBP_JPY_binarized=1]: 4162   <conf:(0.85)> lift:(2.12) lev:(0.09) conv:(3.98) 
+ 2. [USD_JPY_binarized=1, GBP_USD_binarized=1]: 4531 ==> [GBP_JPY_binarized=1]: 3840   <conf:(0.85)> lift:(2.11) lev:(0.09) conv:(3.92) 
+ 3. [GBP_JPY_binarized=1, EUR_USD_binarized=1]: 4965 ==> [EUR_JPY_binarized=1]: 4108   <conf:(0.83)> lift:(2.13) lev:(0.09) conv:(3.53) 
+ 4. [USD_JPY_binarized=1, EUR_JPY_binarized=1]: 5963 ==> [GBP_JPY_binarized=1]: 4915   <conf:(0.82)> lift:(2.05) lev:(0.11) conv:(3.4) 
+ 5. [USD_JPY_binarized=1, EUR_USD_binarized=1]: 4690 ==> [EUR_JPY_binarized=1]: 3773   <conf:(0.8)> lift:(2.07) lev:(0.08) conv:(3.12) 
+ 6. [GBP_JPY_binarized=1, USD_CHF_binarized=1]: 4822 ==> [EUR_JPY_binarized=1]: 3851   <conf:(0.8)> lift:(2.05) lev:(0.08) conv:(3.03)

@@ -67,15 +67,15 @@ def parse_data(folder, reverse_flag = False, replace_nan = False, drop = 1):
     # save into csv
 
     if reverse_flag:
-        diff.to_csv("./"+folder+"_falling_drop"+str(drop)+".csv", index_label="date", float_format="%d")
-        print("./"+folder+"_falling_drop"+str(drop)+".csv")
+        diff.to_csv("./preprocessed/"+folder+"_falling_drop"+str(drop)+".csv", index_label="date", float_format="%d")
+        print("Saved to ./preprocessed/"+folder+"_falling_drop"+str(drop)+".csv")
     else:
-        diff.to_csv("./"+folder+"_rising_drop"+str(drop)+".csv", index_label="date", float_format="%d")
-        print("./"+folder+"_rising_drop"+str(drop)+".csv")
+        diff.to_csv("./preprocessed/"+folder+"_rising_drop"+str(drop)+".csv", index_label="date", float_format="%d")
+        print("Saved to ./preprocessed/"+folder+"_rising_drop"+str(drop)+".csv")
 
 def csv_to_arff(file_name):
     pass
 
-folder = "2017"
+folder = "2002-2016"
 parse_data(folder, reverse_flag= True, drop = 0)
 

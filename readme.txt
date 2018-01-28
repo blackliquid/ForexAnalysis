@@ -12,10 +12,12 @@ LiveAlerts.py : Uses LiveTracker to check for a mined pattern to emerge and give
 
 Instructions : 
 
-1. Parse the historical data into all.csv
-2. Use Weka FpGrowth on all.csv
-3. Copy paste the generated Rules into ParseRules.py
-4. Launch LiveAlerts.py
+1. Parse the training data into a csv file with drop = 0 parameter
+2. Parse the test data into a csv file with drop = 3 parameter
+2. Use Weka FpGrowth on the training data
+3. Copy paste the generated Rules into rules_rising.txt or rules_falling.txt, according to the reverse_flag parameter in OrganiseData.py
+4. Test the generated rules with TestAcc on the test set
+4. Launch LiveAlerts.py for live alerts
 
 Install dependencies : 
 
